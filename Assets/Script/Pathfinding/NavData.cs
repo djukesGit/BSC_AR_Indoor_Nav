@@ -9,7 +9,7 @@ public class NavData
         public static Dictionary<string, int> name = new Dictionary<string, int>()
       {
             //___________________T01_Gebäude_________________
-         /* { "Nothing",0},
+          { "Nothing",0},
           {"Horsaal1",1},
           {"Horsaal2",2},
           {"Horsaal3",3},
@@ -19,13 +19,15 @@ public class NavData
           {"Bibliothek",7},
           {"Seminarraum1",8},
           {"Mensa",9},
-          {"Studien-Info-Center",10},*/
+          {"Studien-Info-Center",10},
 
             //____________________Demo Home___________________
+            
+            /*
             { "Nothing",0},
           {"Raum1",1},
           {"Raum2",2},
-
+          */
       };
 
         public static int index = -1;
@@ -45,6 +47,7 @@ public class NavData
     public struct Device
     {
         public static bool setPosition = false;
+       //public static bool ready = false;
     }
 
     public struct ImageData {

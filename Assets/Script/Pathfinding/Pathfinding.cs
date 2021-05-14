@@ -25,20 +25,8 @@ public class Pathfinding : MonoBehaviour
 
     void Update()
     {
-        /*  if (StartDestination.RoomNumber.Initialize_Start==true && StartDestination.RoomNumber.Initialize_Destination==true) {
-              FindPath(StartPos.transform.GetChild(StartDestination.RoomNumber.StartPoint).position, Destination.transform.GetChild(StartDestination.RoomNumber.DestinationPoint).position);
-              //FindPath(seeker.transform.position, target.transform.position);
-              grid.drawPathObject();
-          }*/
-
-        /*
-        if (NavData.Room.index>-1 && NavData.Start.index>-1 && NavData.Device.setPosition==true)
-        {
-            FindPath(ARCoreDevice.transform.position, LocalPoints.transform.GetChild(NavData.Room.index).position);
-
-            grid.drawPathObject();
-        }*/
-
+     
+        
         if (NavData.Room.index > -1 && NavData.Start.index > -1 && NavData.Device.setPosition == true) 
           {
 
@@ -51,13 +39,11 @@ public class Pathfinding : MonoBehaviour
               }
 
           }
-
-      //  FindPath(ARCoreDevice.transform.position, LocalPoints.transform.GetChild(NavData.Room.index).position);
-
-        // Debug.Log("Position: "+LocalPoints.transform.GetChild(1).position);
-        //  Debug.Log("Winkel_Lokal: "+LocalPoints.transform.GetChild(1).localEulerAngles);
-        //   Debug.Log("Winkel: " + LocalPoints.transform.GetChild(1).eulerAngles);
-
+        
+       
+     //  FindPath(LocalPoints.transform.GetChild(1).position, LocalPoints.transform.GetChild(2).position);
+    //    grid.drawPathObject();
+        
     }
     bool FindPath(Vector3 startPos, Vector3 targetPos)
     {
