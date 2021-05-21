@@ -5,24 +5,29 @@ using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
-    public Text DisplayText;
-    public GameObject OCR_Menu;
-    public GameObject Room_Menu;
+    
+    public GameObject Menu_Start;
+    public GameObject Menu_TextRegnozice;
+    public GameObject Menu_RoomList;
     public GameObject Loading_Menu;
+    public GameObject UI_ScanObjects;
+    public Button StartButton;
     // public GameObject Loading_Menu;
     //public Button btn_loadingScreen;
 
-    public GameObject LocalPoints;
-
+    
     private void Start()
     {
-        OCR_Menu.SetActive(true);
-        Room_Menu.SetActive(false);
+        Menu_Start.SetActive(true);
+        Menu_TextRegnozice.SetActive(false);
+        Menu_RoomList.SetActive(false);
         Loading_Menu.SetActive(false);
+        StartButton.onClick.AddListener(Activ_RoomMenu);
+        StartButton.onClick.AddListener(Activ_RoomMenu);
         //btn_loadingScreen.onClick.AddListener(showLoadingScreen);
     }
 
-    void Update()
+   void Update()
 
     {
         
@@ -33,30 +38,50 @@ public class MenuController : MonoBehaviour
 
             if (NavData.Room.name.TryGetValue(text, out value))
             {
-                DisplayText.text = "Wert gefunden :" + value;
+               // DisplayText.text = "Wert gefunden :" + value;
                 NavData.Start.index = value;
-                OCR_Menu.SetActive(false);
+
+
+                Menu_Start.SetActive(false);
+                Menu_TextRegnozice.SetActive(false);
                 Loading_Menu.SetActive(false);
-                Room_Menu.SetActive(true);
+               // Menu_RoomList.SetActive(true);
 
 
             }
             else
             {
                 value = -1;
-                DisplayText.text = "Wert nicht gefunden :" + value;
+
+                Menu_TextRegnozice.SetActive(true);
+                UI_ScanObjects.SetActive(true);
+                Loading_Menu.SetActive(false);
+                //  DisplayText.text = "Wert nicht gefunden :" + value;
             }
+
+
 
             NavData.OCR.finishedOCR = false;
         }
 
     }
 
-    void showLoadingScreen()
+  
+    void Activ_TextRegnoMenu()
     {
-        OCR_Menu.SetActive(false);
-        Room_Menu.SetActive(false);
-
-        Loading_Menu.SetActive(true);
+        Menu_Start.SetActive(false);
+        Menu_TextRegnozice.SetActive(true);
+        Loading_Menu.SetActive(false);
+        Menu_RoomList.SetActive(false);
     }
+
+    void Activ_RoomMenu()
+    {
+        Menu_Start.SetActive(false);
+        Menu_TextRegnozice.SetActive(false);
+        Loading_Menu.SetActive(false);
+        Menu_RoomList.SetActive(true);
+    }
+
+
 }

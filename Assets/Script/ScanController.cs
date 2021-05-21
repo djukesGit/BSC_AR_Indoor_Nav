@@ -1,6 +1,7 @@
 ﻿using GoogleARCore;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,7 @@ public class ScanController : MonoBehaviour
     private WebCamTexture backCam;
     private Texture defaultBackground;
 
+    public Button ScanButton;
     public RawImage background;
     public AspectRatioFitter fit;
     public Text displayText;
@@ -18,6 +20,7 @@ public class ScanController : MonoBehaviour
     public GameObject ARCoreDevice;
     private void Start()
     {
+      
         defaultBackground = background.texture;
         WebCamDevice[] devices = WebCamTexture.devices;
 
@@ -31,7 +34,7 @@ public class ScanController : MonoBehaviour
         {
             if (!devices[i].isFrontFacing)
             {
-                backCam = new WebCamTexture(devices[i].name, Screen.width, Screen.height);
+                backCam = new WebCamTexture(devices[i].name, backCam.width, backCam.height);
 
             }
         }
@@ -40,10 +43,14 @@ public class ScanController : MonoBehaviour
             displayText.text = "No back camera";
             return;
         }
+
+
         backCam.Play();
         background.texture = backCam;
 
         camAvailable = true;
+
+        ScanButton.onClick.AddListener(SaveCamTexture);
     }
 
     private void Update()
@@ -53,17 +60,17 @@ public class ScanController : MonoBehaviour
             return;
         }
        
-        float ratio = (float)backCam.width / (float)backCam.height;
+     // float ratio = (float)backCam.height / (float)backCam.width;
 
        // float ratio = 1024 / 512;
 
-       fit.aspectRatio = ratio;
+       
 
         float scaleY = backCam.videoVerticallyMirrored ? -1f : 1f;
-        background.rectTransform.localScale = new Vector3(1f, scaleY, 1f);
+        background.rectTransform.localScale = new Vector3(1f,1f, 1f); //scaleY
 
         int orient = -backCam.videoRotationAngle;
-        background.rectTransform.localEulerAngles = new Vector3(0, 0, orient);
+        background.rectTransform.localEulerAngles = new Vector3(0, 0,orient);
 
         if (NavData.Device.setPosition == true)
         {
@@ -74,5 +81,29 @@ public class ScanController : MonoBehaviour
            
             this.gameObject.SetActive(false);
         }
+    }
+
+    void SaveCamTexture()
+    {
+        /*
+        NavData.ImageData._highlightedTexture = new Texture2D(backCam.width, backCam.height);
+        Color[] c = backCam.GetPixels((backCam.width - 1024) / 2, (backCam.height - 512) / 2, 1024, 512);
+
+        NavData.ImageData._highlightedTexture.SetPixels(c);
+        NavData.ImageData._highlightedTexture.Apply();
+
+        var path = Application.persistentDataPath;
+        var encodedPng = NavData.ImageData._highlightedTexture.EncodeToPNG();
+        File.WriteAllBytes(path + "/CamPicTest.png", encodedPng);
+        NavData.ImageData.colors = NavData.ImageData._highlightedTexture.GetPixels32();
+        */
+
+        Texture2D snap = new Texture2D(backCam.width, backCam.height);
+        snap.SetPixels(backCam.GetPixels());
+        snap.Apply();
+
+        var path = Application.persistentDataPath;
+        var encodedPng = snap.EncodeToPNG();
+        File.WriteAllBytes(path + "/CamPicTest.png", encodedPng);
     }
 }

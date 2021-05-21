@@ -10,6 +10,7 @@ public class MoveController : MonoBehaviour
     public GameObject ARCoreDevice;
     public GameObject Camera;
     public GameObject LocalPoints;
+    public GameObject CheckScreen;
 
     private bool Tracking = false;
     //private bool setPosition = false;
@@ -39,7 +40,7 @@ public class MoveController : MonoBehaviour
                 //Camera.transform.rotation = new Vector3(0,0,0);
                 //-  NavData.Device.setPosition = true;
 
-
+                CheckScreen.SetActive(true);
                 ARCoreDevice.transform.rotation = LocalPoints.transform.GetChild(NavData.Start.index).rotation;
                 ARCoreDevice.transform.position = LocalPoints.transform.GetChild(NavData.Start.index).position;
                 // Camera.transform.position = LocalPoints.transform.GetChild(NavData.Start.index).position;

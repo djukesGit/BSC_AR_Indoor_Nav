@@ -12,8 +12,9 @@ public class checkRoom : MonoBehaviour
     public Button btn_HS2;
     public Button btn_HS3;
     public Button btn_Libary;
-    public Text Output;
-
+    // public Text Output;
+    public GameObject Scan;
+    public GameObject TextRegno_Menu;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,11 +29,14 @@ public class checkRoom : MonoBehaviour
 
     private void Update()
     {
-        Output.text = "Index: " + NavData.Start.index;
+       // Output.text = "Aktueller Standort\n" + NavData.OCR.text;
     }
     private void setRoomIndex(int index)
     {
         NavData.Room.index = index;
+        Scan.SetActive(true);
+        TextRegno_Menu.SetActive(true);
         Room_Menu.SetActive(false);
+
     }
 }

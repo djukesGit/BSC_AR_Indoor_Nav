@@ -53,10 +53,11 @@ public class NavData
     public struct ImageData {
 
         public static Texture2D _highlightedTexture;
-        public static int width = 1024;
-        public static int height = 512;
+        public static int width = 480;//1024
+        public static int height = 480;//512
         public static Color32[] colors;
         public static string TextfromImage = "";
+        public static bool savePicture = false;
 
     }
 }

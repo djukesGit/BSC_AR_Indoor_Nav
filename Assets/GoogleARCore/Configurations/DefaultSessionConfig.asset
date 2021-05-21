@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: DefaultSessionConfig
   m_EditorClassIdentifier: 
   MatchCameraFramerate: 1
-  PlaneFindingMode: 1
+  PlaneFindingMode: 0
   LightEstimationMode: 3
   CloudAnchorMode: 0
   AugmentedImageDatabase: {fileID: 0}
-  CameraFocusMode: 1
+  CameraFocusMode: 0
   AugmentedFaceMode: 0
   DepthMode: 0
   InstantPlacementMode: 0
