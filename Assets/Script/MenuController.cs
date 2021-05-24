@@ -9,6 +9,7 @@ public class MenuController : MonoBehaviour
     public GameObject Menu_Start;
     public GameObject Menu_RoomList;
     public GameObject LoadingScreen;
+    public GameObject CheckScreen;
 
     public Button StartButton;
     // public GameObject Loading_Menu;
@@ -38,9 +39,9 @@ public class MenuController : MonoBehaviour
                // DisplayText.text = "Wert gefunden :" + value;
                 NavData.Start.index = value;
 
-
+                CheckScreen.SetActive(true);
                 Menu_Start.SetActive(false);
-               
+                LoadingScreen.SetActive(false);
                 // Menu_RoomList.SetActive(true);
 
                 NavData.OCR.newLocalisation = true;
@@ -49,12 +50,12 @@ public class MenuController : MonoBehaviour
             else
             {
                 value = -1;
+                LoadingScreen.SetActive(false);
 
-            
                 //  DisplayText.text = "Wert nicht gefunden :" + value;
             }
 
-            LoadingScreen.SetActive(false);
+            
 
             NavData.OCR.finishedOCR = false;
         }
