@@ -62,7 +62,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ARCoreDevice: {fileID: 7604577269401552051}
   Camera: {fileID: 7605305169217946933}
-  LocalPoints: {fileID: 0}
 --- !u!1 &7605305169217946933
 GameObject:
   m_ObjectHideFlags: 0

@@ -42,6 +42,7 @@ public class NavData
     {
         public static string text = "";
         public static bool finishedOCR = false;
+        public static bool newLocalisation = false;
     }
 
     public struct Device

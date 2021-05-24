@@ -12,10 +12,7 @@ public class SimulationController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 
     void setStartRoom()
     {

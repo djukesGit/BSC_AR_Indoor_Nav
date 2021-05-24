@@ -7,13 +7,14 @@ public class checkRoom : MonoBehaviour
 {
     //  public GameObject Room_Menu;
     public GameObject Room_Menu;
+    public GameObject TextRegManager;
     //public Button btn_StdInfoCenter;
     public Button btn_HS1;
     public Button btn_HS2;
     public Button btn_HS3;
     public Button btn_Libary;
     // public Text Output;
-    public GameObject Scan;
+   // public GameObject Scan;
     public GameObject TextRegno_Menu;
     // Start is called before the first frame update
     void Start()
@@ -34,8 +35,8 @@ public class checkRoom : MonoBehaviour
     private void setRoomIndex(int index)
     {
         NavData.Room.index = index;
-        Scan.SetActive(true);
-        TextRegno_Menu.SetActive(true);
+        TextRegManager.SetActive(true);
+     
         Room_Menu.SetActive(false);
 
     }

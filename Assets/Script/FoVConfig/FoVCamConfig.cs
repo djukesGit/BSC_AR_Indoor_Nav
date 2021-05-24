@@ -9,9 +9,9 @@ public class FoVCamConfig : MonoBehaviour
 {
 
     public Camera Cam;
-    //public Text FoVText;
+    public Text FoVText;
 
-    bool setVaule = false;
+  
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +22,7 @@ public class FoVCamConfig : MonoBehaviour
     void Update()
     {
 
-        if (Frame.CameraImage.ImageIntrinsics.FocalLength[0] > 0f && (setVaule == false))
+        if (Frame.CameraImage.ImageIntrinsics.FocalLength[0] > 0f)
         {
           
             float focalLength = Frame.CameraImage.ImageIntrinsics.FocalLength[0];
@@ -35,8 +35,8 @@ public class FoVCamConfig : MonoBehaviour
 
             Cam.fieldOfView = ToSingle(fovW);
 
-           // FoVText.text = "FoV: " + Cam.fieldOfView + "    FocalLength: "+Frame.CameraImage.ImageIntrinsics.FocalLength + "    PrincPoints: "+Frame.CameraImage.ImageIntrinsics.PrincipalPoint;
-            setVaule = true;
+           FoVText.text = "FoV: " + Cam.fieldOfView + "    FocalLength: "+Frame.CameraImage.ImageIntrinsics.FocalLength + "    PrincPoints: "+Frame.CameraImage.ImageIntrinsics.PrincipalPoint;
+            
 
             this.gameObject.SetActive(false);
         }
