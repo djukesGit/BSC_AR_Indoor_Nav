@@ -8,6 +8,8 @@ public class ARNaviController : MonoBehaviour
     public GameObject Menu_ARNavi;
     public GameObject TextRegnManager;
     public GameObject MiniMapManager;
+    public GameObject Astar;
+
     public Button btn_ReInit;
 
   
@@ -18,6 +20,7 @@ public class ARNaviController : MonoBehaviour
 
     private void OnEnable()
     {
+        Astar.SetActive(true);
         Menu_ARNavi.SetActive(true);
         MiniMapManager.SetActive(true);
     }
@@ -29,6 +32,7 @@ public class ARNaviController : MonoBehaviour
 
     void ReInitializePos()
     {
+        Astar.SetActive(false);
         Menu_ARNavi.SetActive(false);
         TextRegnManager.SetActive(true);
         MiniMapManager.SetActive(false);

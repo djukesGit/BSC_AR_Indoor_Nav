@@ -11,6 +11,7 @@ public class UserPositionController : MonoBehaviour
     public GameObject Menu_DoorPlate;
     public GameObject ARNaviManager;
     public GameObject LocalPoints;
+  
 
     public Button btn_ScanDoorPlate;
     public Text DoorPlatePos;
@@ -30,7 +31,7 @@ public class UserPositionController : MonoBehaviour
         mySession = ARCoreDevice.AddComponent<ARCoreSession>();
         mySession.SessionConfig = myConfigUserTracking;
         ARCoreDevice.transform.GetChild(0).transform.GetChild(0).gameObject.SetActive(true);
-
+        
 
     }
     private void Start()

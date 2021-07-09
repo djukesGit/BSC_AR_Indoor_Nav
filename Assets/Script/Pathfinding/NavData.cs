@@ -15,11 +15,11 @@ public class NavData
           {"Horsaal3",3},
           {"Horsaal4",4},
           {"Horsaal5",5},
-          {"AudiMax",6},
-          {"Bibliothek",7},
-          {"Seminarraum1",8},
+          {"Seminarraum1",6},
+          {"Audimax",7},
+          {"Bibliothek",8},
           {"Mensa",9},
-          {"Studien-Info-Center",10},
+         // {"Studien-Info-Center",10},
 
             //____________________Demo Home___________________
             

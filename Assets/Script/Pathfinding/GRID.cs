@@ -6,6 +6,8 @@ public class GRID : MonoBehaviour
 {
     Node[,] grid;
     public GameObject NavigationObjectPrefab;
+    public GameObject DestinationObject_Prefab;
+
     public Transform AllNavObjects;
 
     //public Transform Player;
@@ -42,15 +44,21 @@ public class GRID : MonoBehaviour
                     if (path.Contains(n))
                     {
 
-                        
-
-                        NaviObj.Add(Instantiate(NavigationObjectPrefab, new Vector3 (n.worldPosition.x,1f,n.worldPosition.z), Quaternion.identity, AllNavObjects));
-                        
+                        if (!n.drawObjects) {
+                            NaviObj.Add(Instantiate(NavigationObjectPrefab, new Vector3(n.worldPosition.x, 1f, n.worldPosition.z), Quaternion.identity, AllNavObjects));
+                            n.drawObjects = true;
+                        }
                     }
                 }
             }
         }
+        Vector3 tempPos;
+        tempPos = NaviObj[NaviObj.Count - 1].transform.position;
+       // Debug.Log(NaviObj.Count +"   tempPos: "+ tempPos);
         
+        Destroy(NaviObj[(NaviObj.Count-1)]);
+
+        NaviObj.Add(Instantiate(DestinationObject_Prefab, tempPos, Quaternion.identity, AllNavObjects));
     }
     void OnDrawGizmos()
     {
@@ -164,6 +172,16 @@ public class GRID : MonoBehaviour
         {
             Destroy(NaviObj[i]);
         }
+
+        foreach (Node n in grid)
+        {
+            if (path != null)
+            {
+                n.drawObjects = false;
+          
+            }
+        }
+
     }
     
 }

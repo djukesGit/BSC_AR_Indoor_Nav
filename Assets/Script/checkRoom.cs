@@ -23,7 +23,7 @@ public class checkRoom : MonoBehaviour
         btn_HS1.onClick.AddListener(delegate { setRoomIndex(1); });
         btn_HS2.onClick.AddListener(delegate { setRoomIndex(2); });
         btn_HS3.onClick.AddListener(delegate { setRoomIndex(3); });
-        btn_Libary.onClick.AddListener(delegate { setRoomIndex(7); });
+        btn_Libary.onClick.AddListener(delegate { setRoomIndex(8); });
 
        
     }
@@ -34,6 +34,7 @@ public class checkRoom : MonoBehaviour
     }
     private void setRoomIndex(int index)
     {
+        Debug.Log("Click : " + index);
         NavData.Room.index = index;
         TextRegManager.SetActive(true);
      
